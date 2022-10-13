@@ -1,0 +1,52 @@
+@font-face {
+    font-family: pacman;
+    src: url(../font/PAC-FONT.TTF);
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+    font-family: pacman;
+}
+
+body {
+    padding-top: 1%;
+    background-color: rgb(241, 118, 18);
+}
+
+table {
+    margin: 0 auto;
+    border: 5px solid black;
+    font-size: 18px;
+    text-align: center;
+    background-color: black;
+}
+
+.buttons {
+    width: 100%;
+    margin-top: 1%;
+    margin-left: 40%;
+}
+
+button {
+    width: 100px;
+    height: 90px;
+    font-size: 40px;
+    border: 5px solid black;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(188, 188, 188);
+}
+
+#up {
+    margin-left: 6.75%;
+    margin-bottom: 0.3%;
+}
+
+#downButtons {
+    margin-left: -0.26%;
+}
