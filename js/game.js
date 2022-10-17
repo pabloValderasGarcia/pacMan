@@ -11,11 +11,11 @@ game.Tablero = class {
         ['║', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '║'],
         ['║', '•', '═', '═', '═', '•', '║', '•', '═', '═', '╦', '═', '═', ' ', '═', '═', '═', ' ', '═', '═', '╦', '═', '═', '•', '║', '•', '═', '═', '═', '•', '║'],
         ['║', '•', '•', '•', '•', '•', '║', '●', '•', '•', '║', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '║', '•', '•', '●', '║', '•', '•', '•', '•', '•', '║'],
-        ['╠', '═', '═', '═', '╗', '•', '╠', '═', '═', '•', '║', ' ', '═', '╗', ' ', ' ', ' ', '╔', '═', ' ', '║', '•', '═', '═', '╣', '•', '╔', '═', '═', '═', '╣'],
-        ['╠', '═', '═', '═', '╝', '•', '║', '•', '•', '•', ' ', ' ', ' ', '║', ' ', ' ', ' ', '║', ' ', ' ', ' ', '•', '•', '•', '║', '•', '╚', '═', '═', '═', '╣'],
-        ['║', '•', '•', '•', '•', '•', '•', '•', '╔', '═', '═', '╗', ' ', '╚', '═', '═', '═', '╝', ' ', '╔', '═', '═', '╗', '•', '•', '•', '•', '•', '•', '•', '║'],
+        ['╠', '═', '═', '═', '╗', '•', '╠', '═', '═', '•', '║', ' ', '═', '╗', ' ', '║', ' ', '╔', '═', ' ', '║', '•', '═', '═', '╣', '•', '╔', '═', '═', '═', '╣'],
+        ['╠', '═', '═', '═', '╝', '•', '║', '•', '•', '•', ' ', ' ', ' ', '║', ' ', '║', ' ', '║', ' ', ' ', ' ', '•', '•', '•', '║', '•', '╚', '═', '═', '═', '╣'],
+        ['║', '•', '•', '•', '•', '•', '•', '•', '╔', '═', '═', '╗', ' ', '║', ' ', '║', ' ', '║', ' ', '╔', '═', '═', '╗', '•', '•', '•', '•', '•', '•', '•', '║'],
         ['╠', '═', '═', '═', '╗', '•', '║', '•', '║', ' ', ' ', '║', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '║', ' ', ' ', '║', '•', '║', '•', '╔', '═', '═', '═', '╣'],
-        ['╠', '═', '═', '═', '╝', '•', '║', '•', '╚', '═', '═', '╝', ' ', '═', '╗', ' ', '╔', '═', ' ', '╚', '═', '═', '╝', '•', '║', '•', '╚', '═', '═', '═', '╣'],
+        ['╠', '═', '═', '═', '╝', '•', '║', '•', '╚', '═', '═', '╝', ' ', '═', '╦', '═', '╦', '═', ' ', '╚', '═', '═', '╝', '•', '║', '•', '╚', '═', '═', '═', '╣'],
         ['║', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '╚', '═', '╝', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '•', '║'],
         ['║', '●', '╔', '═', '╗', '•', '═', '═', '╗', '•', '╔', '═', '═', '•', '•', '•', '•', '•', '═', '═', '╗', '•', '╔', '═', '═', '•', '╔', '═', '╗', '●', '║'],
         ['║', '•', '╚', '═', '╝', '•', '•', '•', '║', '•', '║', '•', '•', '•', '═', '╦', '═', '•', '•', '•', '║', '•', '║', '•', '•', '•', '╚', '═', '╝', '•', '║'],
@@ -37,6 +37,7 @@ game.Tablero = class {
             for (let j = 0; j < this.board[i].length; j++) {
                 let td = document.createElement('td');
                 td.id = "td" + i + j;
+                // COLORES ELEMENTOS ASCII
                 if (this.board[i][j] == 1) {
                     td.style.fontWeight = 'bold';
                     td.style.fontSize = '20px';
@@ -95,49 +96,39 @@ game.Pacman = class {
             switch (event.code) {
                 // TECLA ARRIBA
                 case "ArrowUp":
-                    console.log("UP");
                     let up = this.tablero.board[this.y-1][this.x];
                     if (up == '•' || up == '●' || up == ' ') {
-                        this.tablero.board[this.y-1][this.x] = 1;
                         this.tablero.board[this.y][this.x] = ' ';
                         this.y--;
                     }
-                    this.tablero.generarTablero();
                     break;
                 // TECLA IZQUIERDA
                 case "ArrowLeft":
-                    console.log("LEFT");
                     let left = this.tablero.board[this.y][this.x-1];
                     if (left == '•' || left == '●' || left == ' ') {
-                        this.tablero.board[this.y][this.x-1] = 1;
                         this.tablero.board[this.y][this.x] = ' ';
                         this.x--;
                     }
-                    this.tablero.generarTablero();
                     break;
                 // TECLA ABAJO
                 case "ArrowDown":
-                    console.log("DOWN");
                     let down = this.tablero.board[this.y+1][this.x];
                     if (down == '•' || down == '●' || down == ' ') {
-                        this.tablero.board[this.y+1][this.x] = 1;
                         this.tablero.board[this.y][this.x] = ' ';
                         this.y++;
                     }
-                    this.tablero.generarTablero();
                     break;
                 // TECLA DERECHA
                 case "ArrowRight":
-                    console.log("RIGHT");
                     let right = this.tablero.board[this.y][this.x+1];
                     if (right == '•' || right == '●' || right == ' ') {
-                        this.tablero.board[this.y][this.x+1] = 1;
                         this.tablero.board[this.y][this.x] = ' ';
                         this.x++;
                     }
-                    this.tablero.generarTablero();
                     break;
             }
+            this.tablero.board[this.y][this.x] = 1;
+            this.tablero.generarTablero();
         })
 
     }
@@ -155,6 +146,8 @@ game.Fantasma = class {
     generarFantasmas() {
         this.coordsFantasmas = [
             //x, y, fantasma
+            [14, 9],
+            [16, 9],
             [14, 8],
             [16, 8],
             [14, 7],
@@ -173,34 +166,49 @@ game.Fantasma = class {
             let down = this.tablero.board[coord[1]+1][coord[0]];
             let right = this.tablero.board[coord[1]][coord[0]+1];
 
+            let movido = false;
+
             // LEFT Y RIGHT
-            if (this.pacMan.x < coord[0]) {
+            if (this.pacMan.x < coord[0] && movido == false) {
                 if (left == '•' || left == '●' || left == ' ' && left != 9) {
                     this.tablero.board[coord[1]][coord[0]-1] = 9;
                     this.tablero.board[coord[1]][coord[0]] = ' ';
                     coord[0]--;
+                    movido = true;
                 }
-                
-            } else {
+            } else if (this.pacMan.x > coord[0] && movido == false) {
                 if (right == '•' || right == '●' || right == ' ' && right != 9) {
                     this.tablero.board[coord[1]][coord[0]+1] = 9;
                     this.tablero.board[coord[1]][coord[0]] = ' ';
                     coord[0]++;
+                    movido = true;
                 }
             }
 
             // UP Y DOWN
-            if (this.pacMan.y < coord[1]) {
+            if (this.pacMan.y < coord[1] && movido == false) {
                 if (up == '•' || up == '●' || up == ' ' && up != 9) {
                     this.tablero.board[coord[1]-1][coord[0]] = 9;
                     this.tablero.board[coord[1]][coord[0]] = ' ';
                     coord[1]--;
+                    movido = true;
+                } else if (left == '•' || left == '●' || left == ' ' && left != 9) {
+                    this.tablero.board[coord[1]][coord[0]-1] = 9;
+                    this.tablero.board[coord[1]][coord[0]] = ' ';
+                    coord[0]--;
+                    movido = true;
                 }
-            } else {
+            } else if (this.pacMan.y > coord[1] && movido == false) {
                 if (down == '•' || down == '●' || down == ' ' && down != 9) {
                     this.tablero.board[coord[1]+1][coord[0]] = 9;
                     this.tablero.board[coord[1]][coord[0]] = ' ';
                     coord[1]++;
+                    movido = true;
+                } else if (left == '•' || left == '●' || left == ' ' && left != 9) {
+                    this.tablero.board[coord[1]][coord[0]-1] = 9;
+                    this.tablero.board[coord[1]][coord[0]] = ' ';
+                    coord[0]--;
+                    movido = true;
                 }
             }
         });
