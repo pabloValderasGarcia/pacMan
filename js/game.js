@@ -36,7 +36,7 @@ game.Tablero = class {
                 td.id = "td" + i + j;
                 if (this.board[i][j] == 1) {
                     td.style.fontWeight = 'bold';
-                    td.style.fontSize = '13.5px';
+                    td.style.fontSize = '20px';
                     td.style.color = 'yellow';
                 }
                 if (this.board[i][j] == 9) {
@@ -46,7 +46,7 @@ game.Tablero = class {
                 if (this.board[i][j] == '●') {
                     td.style.fontWeight = 'bold';
                     td.style.color = 'rgb(239, 187, 180)';
-                    td.style.fontSize = '20px';
+                    td.style.fontSize = '28px';
                 }
                 if (this.board[i][j] == '•') {
                     td.style.fontWeight = 'bold';
@@ -217,45 +217,20 @@ game.Pacman = class {
 }
 
 // FANTASMA
-game.Fantasma = class {
-
-    constructor(tablero) {
-        this.tablero = tablero;
-    }
-
-    generarFantasmas() {
-        this.tablero.board[8][14] = '9';
-        this.tablero.board[7][14] = '9';
-        this.tablero.board[7][16] = '9';
-        this.tablero.board[8][16] = '9';
-        this.tablero.generarTablero();
-    }
-
-    movimientoFantasmas() {
-        this.posicionFantasmas();
-    }
-
-    posicionFantasmas() {
-
-    }
-
-}
+game.Fantasma = class {}
 
 // JUEGO
 game.Juego = class {
 
-    constructor(tablero, pacMan, fantasma) {
+    constructor(tablero, pacMan) {
         this.tablero = tablero;
         this.pacMan = pacMan;
-        this.fantasma = fantasma;
     }
 
     jugar() {
         this.tablero.generarTablero();
         this.pacMan.generarPacMan();
-        this.fantasma.generarFantasmas();
         this.pacMan.movimientoPacMan();
-        this.fantasma.movimientoFantasmas();
     }
 
 }

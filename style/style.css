@@ -13,21 +13,28 @@ html, body {
 
 body {
     padding-top: 1%;
-    background-color: rgb(241, 118, 18);
+    background-color: rgb(54, 52, 51);
+}
+
+#todo {
+    position: relative;
+    height: 100%;
 }
 
 table {
     margin: 0 auto;
     border: 5px solid black;
-    font-size: 18px;
+    font-size: 28px;
     text-align: center;
     background-color: black;
+    position: absolute;
+    left: 10%;
 }
 
 .buttons {
-    width: 100%;
-    margin-top: 1%;
-    margin-left: 40%;
+    position: absolute;
+    right: 11%;
+    bottom: 4%;
 }
 
 button {
@@ -43,8 +50,8 @@ button:hover {
 }
 
 #up {
-    margin-left: 6.75%;
-    margin-bottom: 0.3%;
+    margin-left: 34%;
+    margin-bottom: 3%;
 }
 
 #downButtons {
