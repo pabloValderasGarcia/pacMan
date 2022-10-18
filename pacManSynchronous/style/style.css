@@ -27,33 +27,30 @@ table {
     font-size: 28px;
     text-align: center;
     background-color: black;
+}
+
+#perder {
+    width: 738px;
+    height: 686px;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: Montserrat;
+    margin: 0 auto;
     position: absolute;
-    left: 10%;
+    left: 26%;
+    top: 1.8%;
+    visibility: hidden;
 }
 
-.buttons {
-    position: absolute;
-    right: 11%;
-    bottom: 4%;
+#perdido {
+    margin: 0;
+    margin-top: 300px;
+    text-align: center;
+    font-family: Montserrat;
+    color: red;
+    font-size: 28px;
 }
 
-button {
-    width: 100px;
-    height: 90px;
-    font-size: 40px;
-    border: 5px solid black;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: rgb(188, 188, 188);
-}
-
-#up {
-    margin-left: 34%;
-    margin-bottom: 3%;
-}
-
-#downButtons {
-    margin-left: -0.26%;
+#reiniciar {
+    margin-top: 10px;
+    margin-left: 402px;
 }

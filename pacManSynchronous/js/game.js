@@ -89,48 +89,47 @@ game.Pacman = class {
     }
 
     movimientoPacMan() {
+        window.addEventListener("keyup", this.eventMovimiento);
+    }
 
-        // TECLAS
-        window.addEventListener("keydown", (event) => {
-            fantasma.iniciarFantasmas();
-            switch (event.code) {
-                // TECLA ARRIBA
-                case "ArrowUp":
-                    let up = this.tablero.board[this.y-1][this.x];
-                    if (up == '•' || up == '●' || up == ' ') {
-                        this.tablero.board[this.y][this.x] = ' ';
-                        this.y--;
-                    }
-                    break;
-                // TECLA IZQUIERDA
-                case "ArrowLeft":
-                    let left = this.tablero.board[this.y][this.x-1];
-                    if (left == '•' || left == '●' || left == ' ') {
-                        this.tablero.board[this.y][this.x] = ' ';
-                        this.x--;
-                    }
-                    break;
-                // TECLA ABAJO
-                case "ArrowDown":
-                    let down = this.tablero.board[this.y+1][this.x];
-                    if (down == '•' || down == '●' || down == ' ') {
-                        this.tablero.board[this.y][this.x] = ' ';
-                        this.y++;
-                    }
-                    break;
-                // TECLA DERECHA
-                case "ArrowRight":
-                    let right = this.tablero.board[this.y][this.x+1];
-                    if (right == '•' || right == '●' || right == ' ') {
-                        this.tablero.board[this.y][this.x] = ' ';
-                        this.x++;
-                    }
-                    break;
-            }
-            this.tablero.board[this.y][this.x] = 1;
-            this.tablero.generarTablero();
-        })
-
+    eventMovimiento = (event) => {
+        switch (event.code) {
+            // TECLA ARRIBA
+            case "ArrowUp":
+                let up = this.tablero.board[this.y-1][this.x];
+                if (up == '•' || up == '●' || up == ' ') {
+                    this.tablero.board[this.y][this.x] = ' ';
+                    this.y--;
+                }
+                break;
+            // TECLA IZQUIERDA
+            case "ArrowLeft":
+                let left = this.tablero.board[this.y][this.x-1];
+                if (left == '•' || left == '●' || left == ' ') {
+                    this.tablero.board[this.y][this.x] = ' ';
+                    this.x--;
+                }
+                break;
+            // TECLA ABAJO
+            case "ArrowDown":
+                let down = this.tablero.board[this.y+1][this.x];
+                if (down == '•' || down == '●' || down == ' ') {
+                    this.tablero.board[this.y][this.x] = ' ';
+                    this.y++;
+                }
+                break;
+            // TECLA DERECHA
+            case "ArrowRight":
+                let right = this.tablero.board[this.y][this.x+1];
+                if (right == '•' || right == '●' || right == ' ') {
+                    this.tablero.board[this.y][this.x] = ' ';
+                    this.x++;
+                }
+                break;
+        }
+        this.tablero.board[this.y][this.x] = 1;
+        fantasma.iniciarFantasmas();
+        this.tablero.generarTablero();
     }
 
 }
@@ -170,14 +169,14 @@ game.Fantasma = class {
 
             // LEFT Y RIGHT
             if (this.pacMan.x < coord[0] && movido == false) {
-                if (left == '•' || left == '●' || left == ' ' && left != 9) {
+                if (left == '•' || left == '●' || left == ' ' || left == 1 && left != 9) {
                     this.tablero.board[coord[1]][coord[0]-1] = 9;
                     this.tablero.board[coord[1]][coord[0]] = ' ';
                     coord[0]--;
                     movido = true;
                 }
             } else if (this.pacMan.x > coord[0] && movido == false) {
-                if (right == '•' || right == '●' || right == ' ' && right != 9) {
+                if (right == '•' || right == '●' || right == ' ' || right == 1 && right != 9) {
                     this.tablero.board[coord[1]][coord[0]+1] = 9;
                     this.tablero.board[coord[1]][coord[0]] = ' ';
                     coord[0]++;
@@ -187,30 +186,38 @@ game.Fantasma = class {
 
             // UP Y DOWN
             if (this.pacMan.y < coord[1] && movido == false) {
-                if (up == '•' || up == '●' || up == ' ' && up != 9) {
+                if (up == '•' || up == '●' || up == ' ' || up == 1 && up != 9) {
                     this.tablero.board[coord[1]-1][coord[0]] = 9;
                     this.tablero.board[coord[1]][coord[0]] = ' ';
                     coord[1]--;
                     movido = true;
-                } else if (left == '•' || left == '●' || left == ' ' && left != 9) {
+                } else if (left == '•' || left == '●' || left == ' ' || left == 1 && left != 9) {
                     this.tablero.board[coord[1]][coord[0]-1] = 9;
                     this.tablero.board[coord[1]][coord[0]] = ' ';
                     coord[0]--;
                     movido = true;
                 }
             } else if (this.pacMan.y > coord[1] && movido == false) {
-                if (down == '•' || down == '●' || down == ' ' && down != 9) {
+                if (down == '•' || down == '●' || down == ' ' || down == 1 && down != 9) {
                     this.tablero.board[coord[1]+1][coord[0]] = 9;
                     this.tablero.board[coord[1]][coord[0]] = ' ';
                     coord[1]++;
                     movido = true;
-                } else if (left == '•' || left == '●' || left == ' ' && left != 9) {
+                } else if (left == '•' || left == '●' || left == ' ' || left == 1 && left != 9) {
                     this.tablero.board[coord[1]][coord[0]-1] = 9;
                     this.tablero.board[coord[1]][coord[0]] = ' ';
                     coord[0]--;
                     movido = true;
                 }
             }
+
+            // COMPROBAR MUERTE
+            if (coord[0] == this.pacMan.x && coord[1] == this.pacMan.y) {
+                document.getElementById("perder").style.visibility = "visible";
+                document.getElementById("reiniciar").style.visibility = "visible";
+                window.removeEventListener("keyup", this.pacMan.eventMovimiento);
+            }
+
         });
     }
 
