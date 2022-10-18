@@ -1,0 +1,56 @@
+@font-face {
+    font-family: pacman;
+    src: url(../font/PAC-FONT.TTF);
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+    font-family: pacman;
+}
+
+body {
+    padding-top: 1%;
+    background-color: rgb(54, 52, 51);
+}
+
+#todo {
+    position: relative;
+    height: 100%;
+}
+
+table {
+    margin: 0 auto;
+    border: 5px solid black;
+    font-size: 28px;
+    text-align: center;
+    background-color: black;
+}
+
+#perder {
+    width: 738px;
+    height: 686px;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: Montserrat;
+    margin: 0 auto;
+    position: absolute;
+    left: 26%;
+    top: 1.8%;
+    visibility: hidden;
+}
+
+#perdido {
+    margin: 0;
+    margin-top: 300px;
+    text-align: center;
+    font-family: Montserrat;
+    color: red;
+    font-size: 28px;
+}
+
+#reiniciar {
+    margin-top: 10px;
+    margin-left: 402px;
+}
